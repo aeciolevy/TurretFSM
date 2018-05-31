@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{ccdbdf11-c381-4f92-bf67-ba05fce45ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Public">
+      <UniqueIdentifier>{75c2830e-ea9b-4f39-a9f0-30582628d811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{3f73a39c-59f6-4cb6-a0b8-d251275c643c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\HeaderFiles">
+      <UniqueIdentifier>{6dcd4022-feb1-45d9-a4a5-3b9cee46ecd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\SourceFiles">
+      <UniqueIdentifier>{9e4c503e-26a9-484b-be5c-d94f35576fc3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Public\EngineInterface.h">
+      <Filter>Source Files\Engine\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Public\EngineTypes.h">
+      <Filter>Source Files\Engine\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\GameInterface.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Public\SDL.h">
+      <Filter>Source Files\Engine\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\GameObject.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGTransform.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGShape.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGBoxShape.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGCircleShape.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGPhysics.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\World.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGBounce.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\Output.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\ScoreManager.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\Singleton.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\Factory.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\HashMap.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\GameObjectHandle.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\GameObjectInventory.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGLineShape.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\Help.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGExplosion.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGExplosionController.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGMissileController.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game\Private\Main.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\Game.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\GameObject.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\Component.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGPhysics.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGShape.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\Output.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\ScoreManager.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\Factory.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\World.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\GameObjectHandle.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGMissileController.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGExplosionController.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
