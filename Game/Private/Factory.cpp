@@ -1,56 +1,9 @@
 #include "Game\Public\Factory.h"
 
 Factory* Singleton<Factory>::mSingleton = nullptr;
-int Factory::mMissiliesAvailable = 25;
 std::hash<std::string> s_hash;
 
-GameObject* Factory::CreateCity(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
-{
-	const float CITY_WIDTH = 50.0f;
-	const float CITY_HEIGHT = 10.0f;
 
-	exColor cityColor;
-	cityColor.SetColor(64, 22, 153, 255);
-
-	GameObject* city = new GameObject(hash);
-
-	COGTransform* pTransform = new COGTransform(city, startPosition);
-	city->AddComponent(pTransform);
-
-	COGBoxShape* pBoxShape = new COGBoxShape(pEngine, city, CITY_WIDTH, CITY_HEIGHT, cityColor);
-	city->AddComponent(pBoxShape);
-
-	COGPhysics* pPhysics = new COGPhysics(city, true, GameObjectType::City);
-	city->AddComponent(pPhysics);
-
-	city->Initialize();
-
-	return city;
-}
-
-GameObject* Factory::CreateMissile(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, exColor color, bool collisionActive, GameObjectType type)
-{
-	exColor missileColor = color;
-	
-	GameObject* missile = new GameObject(hash);
-
-	COGTransform* pTransform = new COGTransform(missile, startPosition);
-	missile->AddComponent(pTransform);
-
-	COGMissileController* pMissileController = new COGMissileController(missile, pTransform, pEngine);
-	pMissileController->SetVectorToMissile(finalPosition);
-	missile->AddComponent(pMissileController);
-
-	COGLineShape* pLineShape = new COGLineShape(pEngine, missile, startPosition, missileColor);
-	missile->AddComponent(pLineShape);
-
-	COGPhysics* pPhysics = new COGPhysics(missile, collisionActive, type);
-	missile->AddComponent(pPhysics);
-
-	missile->Initialize();
-
-	return missile;
-}
 
 GameObject* Factory::CreateGameObject(exEngineInterface* pEngine, exVector2 startPosition, GameObjectType gameType)
 {
@@ -69,6 +22,11 @@ GameObject* Factory::CreateGameObject(exEngineInterface* pEngine, exVector2 star
 		std::cout << "Wrong type" << std::endl;
 		return nullptr;
 	}
+}
+
+GameObject* Factory::CreateTurret(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
+{
+
 }
 
 GameObject* Factory::CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType) 
