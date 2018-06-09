@@ -7,51 +7,52 @@ std::hash<std::string> s_hash;
 
 GameObject* Factory::CreateGameObject(exEngineInterface* pEngine, exVector2 startPosition, GameObjectType gameType)
 {
-	GameObject* newGameObject;
-	++mIdentify;
-	switch (gameType)
-	{
-	case GameObjectType::City:
-	{
-		++mCities;
-		return newGameObject = CreateCity(s_hash("City" + std::to_string(mIdentify)), pEngine, startPosition);
-	}
-	case GameObjectType::Explosion:
-		return newGameObject = CreateExplosion(s_hash("Explosion" + std::to_string(mIdentify)), pEngine, startPosition);
-	default:
-		std::cout << "Wrong type" << std::endl;
-		return nullptr;
-	}
+	//GameObject* newGameObject;
+	//++mIdentify;
+	//switch (gameType)
+	//{
+	//case GameObjectType::City:
+	//{
+	//	++mCities;
+	//	return newGameObject = CreateCity(s_hash("City" + std::to_string(mIdentify)), pEngine, startPosition);
+	//}
+	//case GameObjectType::Explosion:
+	//	return newGameObject = CreateExplosion(s_hash("Explosion" + std::to_string(mIdentify)), pEngine, startPosition);
+	//default:
+	//	std::cout << "Wrong type" << std::endl;
+	//	return nullptr;
+	//}
+	return nullptr;
 }
 
 GameObject* Factory::CreateTurret(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
 {
-
+	return nullptr;
 }
 
 GameObject* Factory::CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType) 
 {
-	GameObject* newGameObject;
-	++mIdentify;
-	switch (gameType)
-	{
-	case GameObjectType::MissileFriend:
-	{
-		--Factory::mMissiliesAvailable;
-		exColor friendColor;
-		friendColor.SetColor(255, 255, 255, 255);
-		return newGameObject = CreateMissile(s_hash("Missile" + std::to_string(mIdentify)), pEngine, startPosition, finalPosition, friendColor, false, GameObjectType::MissileFriend);
-	}
-	case GameObjectType::MissileEnemy:
-	{
-		exColor enemyColor;
-		enemyColor.SetColor(200, 0, 20, 255);
-		return newGameObject = CreateMissile(s_hash("MissileEnemy" + std::to_string(mIdentify)), pEngine, startPosition, finalPosition, enemyColor, true, GameObjectType::MissileEnemy);
-	}
-	default:
-		std::cout << "Wrong type" << std::endl;
-		return nullptr;
-	}
+	//GameObject* newGameObject;
+	//++mIdentify;
+	//switch (gameType)
+	//{
+	//case GameObjectType::MissileFriend:
+	//{
+	//	exColor friendColor;
+	//	friendColor.SetColor(255, 255, 255, 255);
+	//	return newGameObject = CreateMissile(s_hash("Missile" + std::to_string(mIdentify)), pEngine, startPosition, finalPosition, friendColor, false, GameObjectType::MissileFriend);
+	//}
+	//case GameObjectType::MissileEnemy:
+	//{
+	//	exColor enemyColor;
+	//	enemyColor.SetColor(200, 0, 20, 255);
+	//	return newGameObject = CreateMissile(s_hash("MissileEnemy" + std::to_string(mIdentify)), pEngine, startPosition, finalPosition, enemyColor, true, GameObjectType::MissileEnemy);
+	//}
+	//default:
+	//	std::cout << "Wrong type" << std::endl;
+	//	return nullptr;
+	//}
+	return nullptr;
 }
 
 GameObject* Factory::CreateExplosion(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)

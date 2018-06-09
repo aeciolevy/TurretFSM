@@ -9,7 +9,6 @@ public:
 	void Initialize(exEngineInterface* engine);
 	void Render();
 	void RenderText();
-	void RenderMissile();
 	static int score;
 private:
 	exEngineInterface * mEngine;
