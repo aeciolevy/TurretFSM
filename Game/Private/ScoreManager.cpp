@@ -26,16 +26,14 @@ void ScoreManager::RenderText()
 	mEngine->DrawText(mFontID, mScorePositionP2, p2ScoreChar, mTextColor, 0);
 }
 
-void ScoreManager::RenderMissile()
-{
-	std::string missile(std::to_string(Factory::mMissiliesAvailable));
-	const char* missileChar = missile.c_str();
-	mEngine->DrawText(mFontID, mMissileText, "Missiles:", mTextColor, 0);
-	mEngine->DrawText(mFontID, mMissileText2, missileChar, mTextColor, 0);
-}
+//void ScoreManager::RenderMissile()
+//{
+//	const char* missileChar = missile.c_str();
+//	mEngine->DrawText(mFontID, mMissileText, "Missiles:", mTextColor, 0);
+//	mEngine->DrawText(mFontID, mMissileText2, missileChar, mTextColor, 0);
+//}
 
 void ScoreManager::Render()
 {
 	RenderText();
-	RenderMissile();
 }

@@ -36,7 +36,6 @@ class Factory : public Singleton<Factory>
 	
 public:
 	int mCities;
-	int static mMissiliesAvailable;
 	friend class Singleton<Factory>;
 	
 	Factory()
@@ -47,8 +46,10 @@ public:
 	GameObject* CreateGameObject(exEngineInterface* pEngine, exVector2 startPosition, GameObjectType gameType);
 	GameObject* CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType);
 
-	GameObject* CreateCity(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
-	GameObject* CreateMissile(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, exColor color, bool collisionActive, GameObjectType type);
+	GameObject* CreateTurret(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
+
+	/*GameObject* CreateCity(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
+	GameObject* CreateMissile(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, exColor color, bool collisionActive, GameObjectType type);*/
 	GameObject* CreateExplosion(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
 
 	void addToStaleList(GameObject* gameObject);
