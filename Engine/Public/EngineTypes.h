@@ -27,6 +27,24 @@ struct exVector2
 		return uVector;
 	}
 
+	float Clamp(float value, float min, float max)
+	{
+		if (value < min)
+		{
+			value = min;
+		}
+		else if (value > max)
+		{
+			value = max;
+		}
+		return value;
+	}
+
+	exVector2 Abs()
+	{
+		return { fabsf(x), fabsf(y) };
+	}
+
 	float Magnitude()
 	{
 		float sumSquare = powf(x, 2) + powf(y, 2);

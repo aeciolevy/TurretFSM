@@ -21,14 +21,6 @@ void COGPhysics::Initialize()
 	mExplosion = mGO->FindComponent<COGExplosion>(ComponentType::Explosion);
 	mMissile = mGO->FindComponent<COGLineShape>(ComponentType::LineShape);
 	AddToComponentVector(mPhysicsComponents);
-	// If it is a ball add bounce to Event collision vector
-	//if (mGenerateCollisionEvents)
-	//{
-	//	COGBounce* mBounce = mGO->FindComponent<COGBounce>(ComponentType::Bounce);
-	//	// Upcast bounce to IPhysicsCollision event
-	//	IPhysicsCollisionEvent* temp = dynamic_cast<COGBounce*>(mBounce);
-	//	mCollisionEventListeners.push_back(temp);
-	//}
 }
 
 COGPhysics::~COGPhysics()
@@ -179,7 +171,7 @@ bool COGPhysics::IsColliding(COGPhysics* pOther)
 		return temp;
 	}
 
-	if (this->mType == GameObjectType::City && pOther->mType == GameObjectType::MissileEnemy)
+	/*if (this->mType == GameObjectType::City && pOther->mType == GameObjectType::MissileEnemy)
 	{
 		bool temp = isCollidingBoxAndLine(this->mTransform->GetPosition(), pOther->mTransform->GetFinalPos());
 		if (temp)
@@ -187,7 +179,7 @@ bool COGPhysics::IsColliding(COGPhysics* pOther)
 			Factory::Instance()->addToStaleList(this->mGO);
 			return true;
 		}
-	}
+	}*/
 	//// we don't cover the other cases
 	//// maybe assert here?
 

@@ -17,8 +17,11 @@ enum class ComponentType : int
 	BoxShape,
 	CircleShape,
 	LineShape,
+	Input,
+	ShootInput,
 	Bounce, 
 	Controller,
+	BulletController,
 	Explosion,
 	ExplosionController,
 	MissileController

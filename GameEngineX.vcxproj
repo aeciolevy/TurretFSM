@@ -147,13 +147,17 @@
     <ClInclude Include="Engine\Public\SDL.h" />
     <ClInclude Include="Game\Public\COGBounce.h" />
     <ClInclude Include="Game\Public\COGBoxShape.h" />
+    <ClInclude Include="Game\Public\COGBulletController.h" />
     <ClInclude Include="Game\Public\COGCircleShape.h" />
+    <ClInclude Include="Game\Public\COGController.h" />
     <ClInclude Include="Game\Public\COGExplosion.h" />
     <ClInclude Include="Game\Public\COGExplosionController.h" />
+    <ClInclude Include="Game\Public\COGInput.h" />
     <ClInclude Include="Game\Public\COGLineShape.h" />
     <ClInclude Include="Game\Public\COGMissileController.h" />
     <ClInclude Include="Game\Public\COGPhysics.h" />
     <ClInclude Include="Game\Public\COGShape.h" />
+    <ClInclude Include="Game\Public\COGShootInput.h" />
     <ClInclude Include="Game\Public\COGTransform.h" />
     <ClInclude Include="Game\Public\Factory.h" />
     <ClInclude Include="Game\Public\GameInterface.h" />
@@ -168,10 +172,13 @@
     <ClInclude Include="Game\Public\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Private\COGController.cpp" />
     <ClCompile Include="Game\Private\COGExplosionController.cpp" />
+    <ClCompile Include="Game\Private\COGInput.cpp" />
     <ClCompile Include="Game\Private\COGMissileController.cpp" />
     <ClCompile Include="Game\Private\COGPhysics.cpp" />
     <ClCompile Include="Game\Private\COGShape.cpp" />
+    <ClCompile Include="Game\Private\COGShootInput.cpp" />
     <ClCompile Include="Game\Private\Component.cpp" />
     <ClCompile Include="Game\Private\Factory.cpp" />
     <ClCompile Include="Game\Private\Game.cpp" />

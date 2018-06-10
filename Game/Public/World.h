@@ -32,6 +32,7 @@ private:
 	std::vector<GameObjectHandle>		mGameObjects;
 	exEngineInterface*					mEngine;
 	exVector2							mMousePosition;
+	Factory*							mFactory;
 	int									mMouseLeft;
 	bool								mMouseLeftOld;
 };

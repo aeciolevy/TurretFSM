@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine\Public\EngineTypes.h"
+#include "Engine\Public\SDL.h"
 #include <random>
 #include <string>
 #include <vector>
@@ -37,5 +38,27 @@ public:
 
 		int location = GenerateRandom(0, (int) mStartPositionEnemy.size() - 1);
 		return mStartPositionEnemy[location];
+	}
+
+	exVector2 static GetMousePosition()
+	{
+		exVector2 mousePosition;
+		int x, y;
+		unsigned int r = SDL_GetMouseState(&x, &y);
+
+		mousePosition.x = (float)x;
+		mousePosition.y = (float)y;
+		
+		return mousePosition;
+
+	}
+
+	bool static MouseClicked()
+	{
+		int x, y, isClicked;
+		unsigned int r = SDL_GetMouseState(&x, &y);
+
+		isClicked = r & SDL_BUTTON(SDL_BUTTON_LEFT);
+		return (bool)isClicked;
 	}
 };

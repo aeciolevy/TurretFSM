@@ -2,6 +2,8 @@
 #include "Game\Public\Factory.h"
 #include "Engine/Public/SDL.h"
 #include "Game\Public\Help.h"
+#include "Game\Public\COGInput.h"
+#include "Game\Public\COGController.h"
 
 extern std::hash<std::string> s_hash;
 
@@ -9,10 +11,13 @@ World::World(exEngineInterface* pEngine)
 {
 	mEngine = pEngine;
 	mMouseLeft = 0;
+	mFactory = Factory::Instance();
 }
 
 void World::Initialize()
 {
+
+	GameObject* city = mFactory->CreateGameObject(mEngine, {0.0f, 250.0f}, GameObjectType::Turret);
 }
 
 void World::MouseClick()
@@ -57,6 +62,16 @@ void World::Update(float fDeltaT)
 		for (COGExplosionController* pExplosionController : COGExplosionController::mExplosionControllerComponents)
 		{
 			pExplosionController->Update(fDeltaT);
+		}
+
+		for (COGController* pController : COGController::mControllerComponents)
+		{
+			pController->Update(fDeltaT);
+		}
+
+		for (COGInput* pInput : COGInput::mInputComponents)
+		{
+			pInput->Update();
 		}
 
 		// run simulation first

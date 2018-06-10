@@ -49,7 +49,6 @@ public:
 
 	virtual void Render() override
 	{
-		CheckScore();
 		mCenter = mTransform->GetPosition();
 		mEngine->DrawCircle(mCenter, mRadius, mColor, 2);
 	}
