@@ -156,5 +156,8 @@
     <ClCompile Include="Game\Private\COGShootInput.cpp">
       <Filter>Source Files\Game\SourceFiles</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Private\COGBulletController.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

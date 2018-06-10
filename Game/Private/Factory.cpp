@@ -47,6 +47,7 @@ GameObject* Factory::CreateTurret(Hash hash, exEngineInterface* pEngine, exVecto
 	turret->AddComponent(pBoxShape);
 
 	exVector2 gunPosition = { startPosition.x + TURRET_WIDTH, startPosition.y + TURRET_HEIGHT / 2.0f };
+	mTurretWeaponStartPos = gunPosition;
 
 	COGLineShape* pLine = new COGLineShape(pEngine, turret, gunPosition, gunColor);
 	turret->AddComponent(pLine);
@@ -74,7 +75,7 @@ GameObject* Factory::CreateBullet(Hash hash, exEngineInterface* pEngine, exVecto
 	COGTransform* pTransform = new COGTransform(bullet, startPosition);
 	bullet->AddComponent(pTransform);
 
-	COGBulletController* pController = new COGBulletController(bullet);
+	COGBulletController* pController = new COGBulletController(bullet, mTurretWeaponStartPos);
 	bullet->AddComponent(pController);
 
 	COGCircleShape* pShape = new COGCircleShape(pEngine, bullet, Radius);
@@ -87,6 +88,7 @@ GameObject* Factory::CreateBullet(Hash hash, exEngineInterface* pEngine, exVecto
 
 	return bullet;
 }
+
 
 GameObject* Factory::CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType) 
 {

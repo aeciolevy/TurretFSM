@@ -56,6 +56,8 @@ public:
 	GameObject* CreateMissile(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, exColor color, bool collisionActive, GameObjectType type);*/
 	GameObject* CreateExplosion(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
 
+	exVector2 GetTurretWeaponStartPos();
+
 	void addToStaleList(GameObject* gameObject);
 	void cleanStaleList();
 	
@@ -63,4 +65,5 @@ private:
 	
 	std::vector<GameObject*>	mStaleGameObjects;
 	int							mIdentify;
+	exVector2					mTurretWeaponStartPos;
 };

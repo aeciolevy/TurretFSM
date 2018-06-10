@@ -65,7 +65,7 @@ struct exVector2
 	{
 		return { x + vec.x, y + vec.y };
 	}
-
+	
 	exVector2 Sub(exVector2 vec)
 	{
 		return { x - vec.x, y - vec.y };
@@ -73,8 +73,9 @@ struct exVector2
 
 	exVector2 VectorDirection()
 	{
-		float xDirection = x >= 0 ? 1.0f : -1.0f;
-		float yDirection = y >= 0 ? 1.0f : -1.0f;
+		float xDirection = x > 0 ? 1.0f : -1.0f;
+		float yDirection = y > 0 ? 1.0f : -1.0f;
+
 		return { xDirection, yDirection };
 	}
 

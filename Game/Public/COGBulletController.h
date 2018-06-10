@@ -6,28 +6,28 @@
 class COGBulletController : public COGController
 {
 public:
-	COGBulletController(GameObject* pGO)
+	COGBulletController(GameObject* pGO, exVector2 weaponStartPosition)
 		: COGController(pGO)
 	{
 		mTransform = pGO->FindComponent<COGTransform>(ComponentType::Transform);
+		// Position bullet lauched
 		mPosition = mTransform->GetPosition();
-		mDirection = mPosition.VectorDirection();
-		exOutputTransform(mDirection.y);
-		velocity = 10;
+		mStartWeaponPos = weaponStartPosition;
+		velocity = 80;
+		CalculateDirection();
 	}
 
 	virtual ComponentType GetType() const { return ComponentType::BulletController; }
 
-	virtual void Update(float deltaTime) override
-	{
-		mPosition.x += mDirection.x * velocity * deltaTime;
-		mPosition.y += mDirection.y * velocity * deltaTime;
-		mTransform->SetPosition(mPosition);
-	}
+	virtual void CalculateDirection();
+
+	virtual void Update(float deltaTime) override;
+
 
 private:
 	COGTransform *		mTransform;
 	exVector2			mPosition;
 	exVector2			mDirection;
+	exVector2			mStartWeaponPos;
 	float				velocity;
 };
