@@ -5,7 +5,7 @@
 #include "Game\Public\COGMissileController.h"
 #include "Game\Public\COGExplosionController.h"
 #include "Engine/Public/EngineInterface.h"
-#include "Game/Public/AIMissile.h"
+#include "Game/Public/Enemy.h"
 
 class Factory;
 // the world, it contains all of our game objects and defines the order of updates
@@ -33,6 +33,7 @@ private:
 	exEngineInterface*					mEngine;
 	exVector2							mMousePosition;
 	Factory*							mFactory;
+	Enemy*								mEnemy;
 	int									mMouseLeft;
 	bool								mMouseLeftOld;
 };

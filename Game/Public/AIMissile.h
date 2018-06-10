@@ -20,7 +20,6 @@ public:
 	{	
 		int cityToAttack = Help::GenerateRandom(0, (int) mCitiesPosition.size() - 1);
 		exVector2 finalPosition = mCitiesPosition[cityToAttack];
-		Factory::Instance()->CreateMissiles(mEngine, Help::EnemyMissileStartPosition(), { finalPosition.x + 15.0f, finalPosition.y }, GameObjectType::MissileEnemy);
 	}
 
 	void Update(float deltaTime) 

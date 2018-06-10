@@ -19,19 +19,16 @@ enum class ComponentType : int
 	LineShape,
 	Input,
 	ShootInput,
+	FSM,
 	Bounce, 
 	Controller,
 	BulletController,
+	EnemyController,
 	Explosion,
 	ExplosionController,
 	MissileController
 };
 
-enum class PaddleIdentifier : int
-{
-	PaddleLeft = 0,
-	PaddleRight,
-};
 
 class Component
 {

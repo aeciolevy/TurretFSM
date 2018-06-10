@@ -11,17 +11,17 @@
 
 
 
-//struct CircleParams
-//{
-//	exVector2 Center;
-//	float Radius;
-//};
-//
-//struct BoxParams
-//{
-//	exVector2 vertex1;
-//	exVector2 vertex2;
-//};
+struct CircleParams
+{
+	exVector2 Center;
+	float Radius;
+};
+
+struct BoxParams
+{
+	exVector2 vertex1;
+	exVector2 vertex2;
+};
 enum class GameObjectType;
 // our interface that allows COGPhysics to talk to anyone
 class IPhysicsCollisionEvent;
@@ -49,9 +49,9 @@ public:
 
 	bool IsColliding(COGPhysics* pOther);
 
-	//CircleParams GetCircleParams();
+	CircleParams GetCircleParams();
 
-	//BoxParams	GetBoxParams(COGBoxShape* boxShape);
+	BoxParams	GetBoxParams(COGBoxShape* boxShape);
 
 	//exVector2 GetNormal(COGPhysics* pOther);
 
@@ -63,7 +63,7 @@ private:
 
 	COGTransform * mTransform;
 	COGBoxShape* mBoxShape;
-	COGExplosion* mExplosion;
+	COGCircleShape* mCircle;
 	COGLineShape* mMissile;
 	GameObjectType mType;
 	GameObject* mGO;

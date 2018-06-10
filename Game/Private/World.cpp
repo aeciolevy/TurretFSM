@@ -4,6 +4,7 @@
 #include "Game\Public\Help.h"
 #include "Game\Public\COGInput.h"
 #include "Game\Public\COGController.h"
+#include "Game\Public\COGFSM.h"
 
 extern std::hash<std::string> s_hash;
 
@@ -12,12 +13,12 @@ World::World(exEngineInterface* pEngine)
 	mEngine = pEngine;
 	mMouseLeft = 0;
 	mFactory = Factory::Instance();
+	mEnemy = new Enemy(pEngine);
 }
 
 void World::Initialize()
 {
-
-	GameObject* city = mFactory->CreateGameObject(mEngine, {0.0f, 250.0f}, GameObjectType::Turret);
+	mFactory->CreateGameObject(mEngine, {0.0f, 250.0f}, GameObjectType::Turret);
 }
 
 void World::MouseClick()
@@ -53,7 +54,7 @@ void World::DrawGameOver()
 void World::Update(float fDeltaT)
 {
 		MouseClick();
-
+		mEnemy->Update(fDeltaT);
 		for (COGMissileController* pMissileController : COGMissileController::mMissileControllerComponents)
 		{
 			pMissileController->Update(fDeltaT);
@@ -62,6 +63,11 @@ void World::Update(float fDeltaT)
 		for (COGExplosionController* pExplosionController : COGExplosionController::mExplosionControllerComponents)
 		{
 			pExplosionController->Update(fDeltaT);
+		}
+
+		for (COGFSM* pFSM : COGFSM::mFSMComponents)
+		{
+			pFSM->Update(fDeltaT);
 		}
 
 		for (COGController* pController : COGController::mControllerComponents)
@@ -86,5 +92,5 @@ void World::Update(float fDeltaT)
 			pShape->Render();
 		}
 
-		
+		mFactory->cleanStaleList();
 }
