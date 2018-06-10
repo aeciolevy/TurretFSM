@@ -141,8 +141,8 @@ bool isCollidingCircleAndCircle(exVector2 circleCenter, float circleRadius, exVe
 {
 	exVector2 vector = circleCenter.GetVector(circleCenter2);
 	float magnitude = vector.Magnitude();
-	float minRadius = std::min(circleRadius, circleRadius2);
-	if (magnitude < minRadius)
+	float maxRadius = std::max(circleRadius, circleRadius2);
+	if (magnitude < maxRadius)
 	{
 		return true;
 	}
@@ -181,7 +181,7 @@ bool COGPhysics::IsColliding(COGPhysics* pOther)
 		bool temp = isCollidingCircleAndCircle(this->mCircle->GetCenter(), this->mCircle->GetRadius(), pOther->mCircle->GetCenter(), pOther->mCircle->GetRadius());
 		if (temp)
 		{
-			ScoreManager::score += 10;
+			ScoreManager::score += 20;
 			Factory::Instance()->addToStaleList(pOther->mGO);
 			Factory::Instance()->addToStaleList(this->mGO);
 		}
@@ -192,11 +192,16 @@ bool COGPhysics::IsColliding(COGPhysics* pOther)
 	{
 		CircleParams circlePar = GetCircleParams();
 		BoxParams boxParams = GetBoxParams(pOther->mBoxShape);
-		//bool temp = isCollidingBoxAndCircle(this->mBoxShape->GetVertex1(), this->mBoxShape->GetVertex2(), pOther->mCircle->GetCenter(), pOther->mCircle->GetRadius());
 		bool temp = IsCircleBoxColliding(circlePar, boxParams);
 		if (temp)
 		{
+			ScoreManager::health -= 25;
 			Factory::Instance()->addToStaleList(this->mGO);
+			// set game over to score manager
+			if (ScoreManager::health <= 0)
+			{			
+				ScoreManager::isDone = true;
+			}
 		}
 	}
 

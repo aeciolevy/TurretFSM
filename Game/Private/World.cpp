@@ -11,31 +11,14 @@ extern std::hash<std::string> s_hash;
 World::World(exEngineInterface* pEngine)
 {
 	mEngine = pEngine;
-	mMouseLeft = 0;
 	mFactory = Factory::Instance();
 	mEnemy = new Enemy(pEngine);
+	mUI = new UIManager(pEngine);
 }
 
 void World::Initialize()
 {
 	mFactory->CreateGameObject(mEngine, {0.0f, 250.0f}, GameObjectType::Turret);
-}
-
-void World::MouseClick()
-{
-	int x, y;
-	unsigned int r = SDL_GetMouseState(&x, &y);
-
-	mMousePosition.x = (float)x;
-	mMousePosition.y = (float)y;
-
-	mMouseLeft = r & SDL_BUTTON(SDL_BUTTON_LEFT);
-}
-
-void World::LauchMissile()
-{
-
-
 }
 
 void World::Destroy()
@@ -53,44 +36,50 @@ void World::DrawGameOver()
 
 void World::Update(float fDeltaT)
 {
-		MouseClick();
-		mEnemy->Update(fDeltaT);
-		for (COGMissileController* pMissileController : COGMissileController::mMissileControllerComponents)
+		if (ScoreManager::isDone)
 		{
-			pMissileController->Update(fDeltaT);
+			mUI->GameOver();
 		}
-
-		for (COGExplosionController* pExplosionController : COGExplosionController::mExplosionControllerComponents)
+		else
 		{
-			pExplosionController->Update(fDeltaT);
-		}
+			mEnemy->Update(fDeltaT);
+			for (COGMissileController* pMissileController : COGMissileController::mMissileControllerComponents)
+			{
+				pMissileController->Update(fDeltaT);
+			}
 
-		for (COGFSM* pFSM : COGFSM::mFSMComponents)
-		{
-			pFSM->Update(fDeltaT);
-		}
+			for (COGExplosionController* pExplosionController : COGExplosionController::mExplosionControllerComponents)
+			{
+				pExplosionController->Update(fDeltaT);
+			}
 
-		for (COGController* pController : COGController::mControllerComponents)
-		{
-			pController->Update(fDeltaT);
-		}
+			for (COGFSM* pFSM : COGFSM::mFSMComponents)
+			{
+				pFSM->Update(fDeltaT);
+			}
 
-		for (COGInput* pInput : COGInput::mInputComponents)
-		{
-			pInput->Update();
-		}
+			for (COGController* pController : COGController::mControllerComponents)
+			{
+				pController->Update(fDeltaT);
+			}
 
-		// run simulation first
-		for (COGPhysics* pPhysics : COGPhysics::mPhysicsComponents)
-		{
-			pPhysics->Update(fDeltaT);
-		}
+			for (COGInput* pInput : COGInput::mInputComponents)
+			{
+				pInput->Update();
+			}
 
-		// then render everything
-		for (COGShape* pShape : COGShape::mShapeComponents)
-		{
-			pShape->Render();
-		}
+			// run simulation first
+			for (COGPhysics* pPhysics : COGPhysics::mPhysicsComponents)
+			{
+				pPhysics->Update(fDeltaT);
+			}
 
-		mFactory->cleanStaleList();
+			// then render everything
+			for (COGShape* pShape : COGShape::mShapeComponents)
+			{
+				pShape->Render();
+			}
+			mUI->Render(fDeltaT);
+			mFactory->cleanStaleList();
+		}
 }

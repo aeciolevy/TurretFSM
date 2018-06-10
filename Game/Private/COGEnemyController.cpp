@@ -10,12 +10,27 @@ void COGEnemyController::Update(float deltaTime)
 
 void COGEnemyController::SetY()
 {
-	if (mPosition.y <= 250.0f)
+	if (mPosition.x > 250.0f) 
 	{
-		mDirection.y = 1.0f;
+		if (mPosition.y <= 150.0f)
+		{
+			mDirection.y = 1.0f;
+		}
+		else if (mPosition.y >= 500.0f)
+		{
+			mDirection.y = -1.0f;
+		}
 	}
-	else if (mPosition.y >= 330.0f)
+	else
 	{
-		mDirection.y = -1.0f;
+		if (mPosition.y <= 250.0f)
+		{
+			mDirection.y = 1.0f;
+		}
+		else if (mPosition.y >= 330.0f)
+		{
+			mDirection.y = -1.0f;
+		}
 	}
+	
 }

@@ -6,6 +6,7 @@
 #include "Game\Public\COGExplosionController.h"
 #include "Engine/Public/EngineInterface.h"
 #include "Game/Public/Enemy.h"
+#include "Game/Public/UIManager.h"
 
 class Factory;
 // the world, it contains all of our game objects and defines the order of updates
@@ -23,17 +24,10 @@ public:
 
 	virtual void DrawGameOver();
 
-	virtual void MouseClick();
-
-	virtual void LauchMissile();
-
 private:
 
-	std::vector<GameObjectHandle>		mGameObjects;
 	exEngineInterface*					mEngine;
-	exVector2							mMousePosition;
 	Factory*							mFactory;
 	Enemy*								mEnemy;
-	int									mMouseLeft;
-	bool								mMouseLeftOld;
+	UIManager*							mUI;
 };

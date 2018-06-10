@@ -121,6 +121,9 @@
     <ClInclude Include="Game\Public\COGEnemyController.h">
       <Filter>Source Files\Game\HeaderFiles</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Public\UIManager.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -184,6 +187,9 @@
       <Filter>Source Files\Game\SourceFiles</Filter>
     </ClCompile>
     <ClCompile Include="Game\Private\Enemy.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\UIManager.cpp">
       <Filter>Source Files\Game\SourceFiles</Filter>
     </ClCompile>
   </ItemGroup>

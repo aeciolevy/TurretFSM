@@ -8,10 +8,12 @@ void COGShootInput::ChangeState()
 		if (mFSM->mState == State::Normal)
 		{
 			mFSM->Next(new FSMNormalBullet(mFSM), State::BigShoot);
+			ScoreManager::weapon = "Big";
 		}
 		else
 		{
 			mFSM->Next(new FSMNormalBullet(mFSM), State::Normal);
+			ScoreManager::weapon = "Small";
 		}
 	}
 	mSpacePressed = Help::SpacePressed();
@@ -21,6 +23,7 @@ void COGShootInput::Update()
 {
 	if (Help::MouseClicked() && !mMouseClick)
 	{
+		--ScoreManager::bullets;
 		mPosition = mTransform->GetFinalPos();
 		if (mFSM->mState == State::Normal)
 		{
@@ -33,5 +36,4 @@ void COGShootInput::Update()
 	}
 	mMouseClick = Help::MouseClicked();
 	ChangeState();
-
 }

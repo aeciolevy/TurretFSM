@@ -2,20 +2,16 @@
 #include "Game\Public\Singleton.h"
 #include "Engine\Public\EngineTypes.h"
 #include "Engine\Public\EngineInterface.h"
+#include <string>
 class ScoreManager : public Singleton<ScoreManager>
 {
 public:
 	friend class Singleton<ScoreManager>;
-	void Initialize(exEngineInterface* engine);
-	void Render();
-	void RenderText();
 	static int score;
+	static int health;
+	static int bullets;
+	static std::string weapon;
+	static bool isDone;
 private:
-	exEngineInterface * mEngine;
-	int					mFontID;
-	exColor				mTextColor;
-	exVector2			mTextP2;
-	exVector2			mScorePositionP2;
-	exVector2			mMissileText;
-	exVector2			mMissileText2;
+
 };
