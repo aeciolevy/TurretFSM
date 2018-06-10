@@ -21,14 +21,6 @@ void COGPhysics::Initialize()
 	mExplosion = mGO->FindComponent<COGExplosion>(ComponentType::Explosion);
 	mMissile = mGO->FindComponent<COGLineShape>(ComponentType::LineShape);
 	AddToComponentVector(mPhysicsComponents);
-	// If it is a ball add bounce to Event collision vector
-	//if (mGenerateCollisionEvents)
-	//{
-	//	COGBounce* mBounce = mGO->FindComponent<COGBounce>(ComponentType::Bounce);
-	//	// Upcast bounce to IPhysicsCollision event
-	//	IPhysicsCollisionEvent* temp = dynamic_cast<COGBounce*>(mBounce);
-	//	mCollisionEventListeners.push_back(temp);
-	//}
 }
 
 COGPhysics::~COGPhysics()

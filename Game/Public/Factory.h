@@ -6,6 +6,8 @@
 #include "Engine\Public\EngineInterface.h"
 #include "Game\Public\COGTransform.h"
 #include "Game\Public\COGBoxShape.h"
+#include "Game\Public\COGBulletController.h"
+#include "Game\Public\COGShootInput.h"
 #include "Game\Public\COGPhysics.h"
 #include "Game\Public\COGLineShape.h"
 #include "Game\Public\COGExplosion.h"
@@ -14,12 +16,14 @@
 #include "Game\Public\GameObjectInventory.h"
 
 class COGMissileController;
+class COGShootInput;
 
 extern std::hash<std::string> s_hash;
 
 enum class GameObjectType : int
 {
 	Turret = 0,
+	Bullet,
 	Base,
 	MissileFriend,
 	Missile,
@@ -47,7 +51,7 @@ public:
 	GameObject* CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType);
 
 	GameObject* CreateTurret(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
-
+	GameObject* CreateBullet(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
 	/*GameObject* CreateCity(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
 	GameObject* CreateMissile(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, exColor color, bool collisionActive, GameObjectType type);*/
 	GameObject* CreateExplosion(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);

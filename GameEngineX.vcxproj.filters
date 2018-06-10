@@ -94,6 +94,18 @@
     <ClInclude Include="Game\Public\COGMissileController.h">
       <Filter>Source Files\Game\HeaderFiles</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Public\COGInput.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGShootInput.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGBulletController.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Public\COGController.h">
+      <Filter>Source Files\Game\HeaderFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -133,6 +145,15 @@
       <Filter>Source Files\Game\SourceFiles</Filter>
     </ClCompile>
     <ClCompile Include="Game\Private\COGExplosionController.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGInput.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGController.cpp">
+      <Filter>Source Files\Game\SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Private\COGShootInput.cpp">
       <Filter>Source Files\Game\SourceFiles</Filter>
     </ClCompile>
   </ItemGroup>

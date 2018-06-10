@@ -21,6 +21,7 @@ public:
 
 	virtual ComponentType GetType() const { return ComponentType::LineShape; }
 
+	// Method to make the line Move
 	virtual void SetFinalPos()
 	{
 		exVector2 temp;
@@ -31,6 +32,7 @@ public:
 		temp.x = temp.Clamp(temp.x, 0, 100);
 		temp.y = temp.Clamp(temp.y, -30, 30);
 		mFinalPos = mStartPos.Add(temp);
+		mTransform->SetFinalPos(mFinalPos);
 	}
 
 	virtual exVector2 GetPosition()

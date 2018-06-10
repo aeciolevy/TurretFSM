@@ -13,8 +13,11 @@ GameObject* Factory::CreateGameObject(exEngineInterface* pEngine, exVector2 star
 	{
 	case GameObjectType::Turret:
 	{
-		++mCities;
 		return newGameObject = CreateTurret(s_hash("Turret" + std::to_string(mIdentify)), pEngine, startPosition);
+	}
+	case GameObjectType::Bullet:
+	{
+		return newGameObject = CreateBullet(s_hash("Bullet" + std::to_string(mIdentify)), pEngine, startPosition);
 	}
 	case GameObjectType::Explosion:
 		return newGameObject = CreateExplosion(s_hash("Explosion" + std::to_string(mIdentify)), pEngine, startPosition);
@@ -51,9 +54,38 @@ GameObject* Factory::CreateTurret(Hash hash, exEngineInterface* pEngine, exVecto
 	COGPhysics* pPhysics = new COGPhysics(turret, true, GameObjectType::Turret);
 	turret->AddComponent(pPhysics);
 
+	COGShootInput* pShoot = new COGShootInput(pEngine, turret);
+	turret->AddComponent(pShoot);
+
 	turret->Initialize();
 
 	return turret;
+}
+
+GameObject* Factory::CreateBullet(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
+{
+	exColor bulletColor;
+	bulletColor.SetColor(255, 255, 255, 255);
+
+	float Radius = 20.0f;
+
+	GameObject* bullet = new GameObject(hash);
+
+	COGTransform* pTransform = new COGTransform(bullet, startPosition);
+	bullet->AddComponent(pTransform);
+
+	COGBulletController* pController = new COGBulletController(bullet);
+	bullet->AddComponent(pController);
+
+	COGCircleShape* pShape = new COGCircleShape(pEngine, bullet, Radius);
+	bullet->AddComponent(pShape);
+
+	COGPhysics* pPhysics = new COGPhysics(bullet, true, GameObjectType::Bullet);
+	bullet->AddComponent(pPhysics);
+
+	bullet->Initialize();
+
+	return bullet;
 }
 
 GameObject* Factory::CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType) 

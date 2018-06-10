@@ -18,6 +18,11 @@ public:
 
 	exVector2& GetFinalPos() { return mFinalPos; }
 
+	void SetPosition(exVector2 newPosition)
+	{
+		mPosition = newPosition;
+	}
+
 	void SetFinalPos(exVector2 finalPosition) 
 	{
 		mFinalPos = finalPosition;

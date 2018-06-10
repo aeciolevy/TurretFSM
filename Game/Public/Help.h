@@ -52,4 +52,13 @@ public:
 		return mousePosition;
 
 	}
+
+	bool static MouseClicked()
+	{
+		int x, y, isClicked;
+		unsigned int r = SDL_GetMouseState(&x, &y);
+
+		isClicked = r & SDL_BUTTON(SDL_BUTTON_LEFT);
+		return (bool)isClicked;
+	}
 };
