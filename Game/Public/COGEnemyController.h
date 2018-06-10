@@ -14,7 +14,7 @@ public:
 		mTransform = pGO->FindComponent<COGTransform>(ComponentType::Transform);
 		// Position bullet lauched
 		mPosition = mTransform->GetPosition();
-		velocity = 80;	
+		velocity = 120;	
 		mDirection = { -1, 1 };
 	}
 

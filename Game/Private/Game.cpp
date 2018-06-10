@@ -38,10 +38,6 @@ MyGame::~MyGame()
 void MyGame::Initialize( exEngineInterface* pEngine )
 {
 	mEngine = pEngine;
-
-	mScoreManager = ScoreManager::Instance();
-	mScoreManager->Initialize(mEngine);
-
 	mWorld = new World(mEngine);
 	mWorld->Initialize();
 }
@@ -105,5 +101,4 @@ void MyGame::Run( float fDeltaT )
 {
 	DrawCrosshair();
 	mWorld->Update(fDeltaT);
-	mScoreManager->Render();
 }
