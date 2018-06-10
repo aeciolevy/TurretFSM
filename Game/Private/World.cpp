@@ -9,10 +9,13 @@ World::World(exEngineInterface* pEngine)
 {
 	mEngine = pEngine;
 	mMouseLeft = 0;
+	mFactory = Factory::Instance();
 }
 
 void World::Initialize()
 {
+
+	GameObject* city =mFactory->CreateGameObject(mEngine, {0.0f, 250.0f}, GameObjectType::Turret);
 }
 
 void World::MouseClick()

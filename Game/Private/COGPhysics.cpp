@@ -179,7 +179,7 @@ bool COGPhysics::IsColliding(COGPhysics* pOther)
 		return temp;
 	}
 
-	if (this->mType == GameObjectType::City && pOther->mType == GameObjectType::MissileEnemy)
+	/*if (this->mType == GameObjectType::City && pOther->mType == GameObjectType::MissileEnemy)
 	{
 		bool temp = isCollidingBoxAndLine(this->mTransform->GetPosition(), pOther->mTransform->GetFinalPos());
 		if (temp)
@@ -187,7 +187,7 @@ bool COGPhysics::IsColliding(COGPhysics* pOther)
 			Factory::Instance()->addToStaleList(this->mGO);
 			return true;
 		}
-	}
+	}*/
 	//// we don't cover the other cases
 	//// maybe assert here?
 

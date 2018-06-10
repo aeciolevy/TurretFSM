@@ -19,7 +19,7 @@ extern std::hash<std::string> s_hash;
 
 enum class GameObjectType : int
 {
-	City = 0,
+	Turret = 0,
 	Base,
 	MissileFriend,
 	Missile,
