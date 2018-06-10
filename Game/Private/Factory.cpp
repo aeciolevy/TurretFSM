@@ -3,8 +3,6 @@
 Factory* Singleton<Factory>::mSingleton = nullptr;
 std::hash<std::string> s_hash;
 
-
-
 GameObject* Factory::CreateGameObject(exEngineInterface* pEngine, exVector2 startPosition, GameObjectType gameType)
 {
 	GameObject* newGameObject;
@@ -17,7 +15,15 @@ GameObject* Factory::CreateGameObject(exEngineInterface* pEngine, exVector2 star
 	}
 	case GameObjectType::Bullet:
 	{
-		return newGameObject = CreateBullet(s_hash("Bullet" + std::to_string(mIdentify)), pEngine, startPosition);
+		return newGameObject = CreateBullet(s_hash("Bullet" + std::to_string(mIdentify)), pEngine, startPosition, 20.0f);
+	}
+	case GameObjectType::BigBullet:
+	{
+		return newGameObject = CreateBullet(s_hash("BigBullet" + std::to_string(mIdentify)), pEngine, startPosition, 40.0f);
+	}
+	case GameObjectType::Enemy:
+	{
+		return newGameObject = CreateAI(s_hash("Enemy" + std::to_string(mIdentify)), pEngine, startPosition);
 	}
 	case GameObjectType::Explosion:
 		return newGameObject = CreateExplosion(s_hash("Explosion" + std::to_string(mIdentify)), pEngine, startPosition);
@@ -55,6 +61,10 @@ GameObject* Factory::CreateTurret(Hash hash, exEngineInterface* pEngine, exVecto
 	COGPhysics* pPhysics = new COGPhysics(turret, true, GameObjectType::Turret);
 	turret->AddComponent(pPhysics);
 
+	COGFSM* pFSM = new COGFSM(turret);
+	turret->AddComponent(pFSM);
+	pFSM->Start(new FSMNormalBullet(pFSM), State::Normal);
+
 	COGShootInput* pShoot = new COGShootInput(pEngine, turret);
 	turret->AddComponent(pShoot);
 
@@ -63,22 +73,20 @@ GameObject* Factory::CreateTurret(Hash hash, exEngineInterface* pEngine, exVecto
 	return turret;
 }
 
-GameObject* Factory::CreateBullet(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
+GameObject* Factory::CreateBullet(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, float Radius)
 {
 	exColor bulletColor;
 	bulletColor.SetColor(255, 255, 255, 255);
-
-	float Radius = 20.0f;
-
+	
 	GameObject* bullet = new GameObject(hash);
 
 	COGTransform* pTransform = new COGTransform(bullet, startPosition);
 	bullet->AddComponent(pTransform);
 
-	COGBulletController* pController = new COGBulletController(bullet, mTurretWeaponStartPos);
+	COGBulletController* pController = new COGBulletController(bullet, pEngine, mTurretWeaponStartPos);
 	bullet->AddComponent(pController);
 
-	COGCircleShape* pShape = new COGCircleShape(pEngine, bullet, Radius);
+	COGCircleShape* pShape = new COGCircleShape(pEngine, bullet, Radius, bulletColor);
 	bullet->AddComponent(pShape);
 
 	COGPhysics* pPhysics = new COGPhysics(bullet, true, GameObjectType::Bullet);
@@ -87,32 +95,6 @@ GameObject* Factory::CreateBullet(Hash hash, exEngineInterface* pEngine, exVecto
 	bullet->Initialize();
 
 	return bullet;
-}
-
-
-GameObject* Factory::CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType) 
-{
-	//GameObject* newGameObject;
-	//++mIdentify;
-	//switch (gameType)
-	//{
-	//case GameObjectType::MissileFriend:
-	//{
-	//	exColor friendColor;
-	//	friendColor.SetColor(255, 255, 255, 255);
-	//	return newGameObject = CreateMissile(s_hash("Missile" + std::to_string(mIdentify)), pEngine, startPosition, finalPosition, friendColor, false, GameObjectType::MissileFriend);
-	//}
-	//case GameObjectType::MissileEnemy:
-	//{
-	//	exColor enemyColor;
-	//	enemyColor.SetColor(200, 0, 20, 255);
-	//	return newGameObject = CreateMissile(s_hash("MissileEnemy" + std::to_string(mIdentify)), pEngine, startPosition, finalPosition, enemyColor, true, GameObjectType::MissileEnemy);
-	//}
-	//default:
-	//	std::cout << "Wrong type" << std::endl;
-	//	return nullptr;
-	//}
-	return nullptr;
 }
 
 GameObject* Factory::CreateExplosion(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
@@ -136,12 +118,38 @@ GameObject* Factory::CreateExplosion(Hash hash, exEngineInterface* pEngine, exVe
 	COGExplosionController* pExplosionController = new COGExplosionController(explosion, pTransform, Radius);
 	explosion->AddComponent(pExplosionController);
 
-	COGPhysics* pPhysics = new COGPhysics(explosion, true, GameObjectType::Explosion);
+	COGPhysics* pPhysics = new COGPhysics(explosion, false, GameObjectType::Explosion);
 	explosion->AddComponent(pPhysics);
 
 	explosion->Initialize();
 
 	return explosion;
+}
+
+GameObject* Factory::CreateAI(Hash hash, exEngineInterface* pEngine, exVector2 startPosition)
+{
+	exColor aiColor;
+	aiColor.SetColor(170, Help::GenerateRandom(104,255), 18, 255);
+
+	float Radius = 15.0f;
+
+	GameObject* enemy = new GameObject(hash);
+
+	COGTransform* pTransform = new COGTransform(enemy, startPosition);
+	enemy->AddComponent(pTransform);
+
+	COGEnemyController* pController = new COGEnemyController(pEngine, enemy);
+	enemy->AddComponent(pController);
+	
+	COGCircleShape* pShape = new COGCircleShape(pEngine, enemy, Radius, aiColor);
+	enemy->AddComponent(pShape);
+
+	COGPhysics* pPhysics = new COGPhysics(enemy, true, GameObjectType::Enemy);
+	enemy->AddComponent(pPhysics);
+
+	enemy->Initialize();
+
+	return enemy;
 }
 
 void Factory::addToStaleList(GameObject* gameObject)

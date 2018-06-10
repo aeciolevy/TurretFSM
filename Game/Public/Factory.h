@@ -14,9 +14,12 @@
 #include "Game\Public\COGExplosionController.h"
 #include "Game\Public\COGMissileController.h"
 #include "Game\Public\GameObjectInventory.h"
+#include "Game\Public\FSMNormalBullet.h"
+#include "Game\Public\COGFSM.h"
+#include "Game\Public\COGEnemyController.h"
 
 class COGMissileController;
-class COGShootInput;
+
 
 extern std::hash<std::string> s_hash;
 
@@ -24,7 +27,9 @@ enum class GameObjectType : int
 {
 	Turret = 0,
 	Bullet,
+	BigBullet,
 	Base,
+	Enemy,
 	MissileFriend,
 	Missile,
 	MissileEnemy,
@@ -48,15 +53,11 @@ public:
 	}
 
 	GameObject* CreateGameObject(exEngineInterface* pEngine, exVector2 startPosition, GameObjectType gameType);
-	GameObject* CreateMissiles(exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, GameObjectType gameType);
 
 	GameObject* CreateTurret(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
-	GameObject* CreateBullet(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
-	/*GameObject* CreateCity(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
-	GameObject* CreateMissile(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, exVector2 finalPosition, exColor color, bool collisionActive, GameObjectType type);*/
+	GameObject* CreateBullet(Hash hash, exEngineInterface* pEngine, exVector2 startPosition, float Radius);
 	GameObject* CreateExplosion(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
-
-	exVector2 GetTurretWeaponStartPos();
+	GameObject* CreateAI(Hash hash, exEngineInterface* pEngine, exVector2 startPosition);
 
 	void addToStaleList(GameObject* gameObject);
 	void cleanStaleList();

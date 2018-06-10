@@ -38,7 +38,7 @@ public:
 
 	virtual void Render() override
 	{
-		mEngine->DrawCircle(mCenter, mRadius, mColor, 2);
+		mEngine->DrawLineCircle(mCenter, mRadius, mColor, 2);
 	}
 
 private:

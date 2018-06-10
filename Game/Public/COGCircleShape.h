@@ -9,16 +9,13 @@ class COGCircleShape : public COGShape
 {
 public:
 
-	COGCircleShape(exEngineInterface* pEngine, GameObject* pGO, float fRadius)
+	COGCircleShape(exEngineInterface* pEngine, GameObject* pGO, float fRadius, exColor color)
 		: COGShape(pGO)
 		, mRadius(fRadius)
 	{
 		mEngine = pEngine;
 		mTransform = pGO->FindComponent<COGTransform>(ComponentType::Transform);
-		mColor.mColor[0] = 255;
-		mColor.mColor[1] = 255;
-		mColor.mColor[2] = 255;
-		mColor.mColor[3] = 255;
+		mColor = color;
 	}
 
 	virtual ComponentType GetType() const { return ComponentType::CircleShape; }
@@ -31,20 +28,6 @@ public:
 	virtual exVector2 GetCenter()
 	{
 		return mTransform->GetPosition();
-	}
-
-	virtual void CheckScore()
-	{
-		float xPositionLeft = mTransform->GetPosition().x - mRadius;
-		float xPositionRight = mTransform->GetPosition().x + mRadius;
-		if (xPositionLeft <= 0)
-		{
-			mTransform->ResetPosition({ 550.0f, 300.0f});
-		}
-		if (xPositionRight >= kViewPortWidth)
-		{
-			mTransform->ResetPosition({ 350.0f, 300.0f });
-		}
 	}
 
 	virtual void Render() override

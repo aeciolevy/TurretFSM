@@ -53,6 +53,18 @@ public:
 
 	}
 
+	bool static isButtonDown(int nScancode)
+	{
+		int nKeys = 0;
+		const Uint8 *pState = SDL_GetKeyboardState(&nKeys);
+		return pState[nScancode];
+	}
+
+	bool static SpacePressed()
+	{
+		return isButtonDown(SDL_SCANCODE_SPACE);
+	}
+
 	bool static MouseClicked()
 	{
 		int x, y, isClicked;
@@ -60,5 +72,18 @@ public:
 
 		isClicked = r & SDL_BUTTON(SDL_BUTTON_LEFT);
 		return (bool)isClicked;
+	}
+
+	bool static CheckBorders(exVector2 position)
+	{
+		if (position.y < kViewPortHeightMin || position.y > kViewPortHeight) 
+		{
+			return true;
+		}
+		if (position.x < kViewPortWidthMin || position.x > kViewPortWidth)
+		{
+			return true;
+		}
+		return false;
 	}
 };

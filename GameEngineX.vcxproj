@@ -150,8 +150,12 @@
     <ClInclude Include="Game\Public\COGBulletController.h" />
     <ClInclude Include="Game\Public\COGCircleShape.h" />
     <ClInclude Include="Game\Public\COGController.h" />
+    <ClInclude Include="Game\Public\COGEnemyController.h" />
     <ClInclude Include="Game\Public\COGExplosion.h" />
     <ClInclude Include="Game\Public\COGExplosionController.h" />
+    <ClInclude Include="Game\Public\COGFSM.h" />
+    <ClInclude Include="Game\Public\Enemy.h" />
+    <ClInclude Include="Game\Public\FSMState.h" />
     <ClInclude Include="Game\Public\COGInput.h" />
     <ClInclude Include="Game\Public\COGLineShape.h" />
     <ClInclude Include="Game\Public\COGMissileController.h" />
@@ -160,6 +164,7 @@
     <ClInclude Include="Game\Public\COGShootInput.h" />
     <ClInclude Include="Game\Public\COGTransform.h" />
     <ClInclude Include="Game\Public\Factory.h" />
+    <ClInclude Include="Game\Public\FSMNormalBullet.h" />
     <ClInclude Include="Game\Public\GameInterface.h" />
     <ClInclude Include="Game\Public\GameObject.h" />
     <ClInclude Include="Game\Public\GameObjectHandle.h" />
@@ -174,7 +179,11 @@
   <ItemGroup>
     <ClCompile Include="Game\Private\COGBulletController.cpp" />
     <ClCompile Include="Game\Private\COGController.cpp" />
+    <ClCompile Include="Game\Private\COGEnemyController.cpp" />
     <ClCompile Include="Game\Private\COGExplosionController.cpp" />
+    <ClCompile Include="Game\Private\COGFSM.cpp" />
+    <ClCompile Include="Game\Private\Enemy.cpp" />
+    <ClCompile Include="Game\Private\FSMState.cpp" />
     <ClCompile Include="Game\Private\COGInput.cpp" />
     <ClCompile Include="Game\Private\COGMissileController.cpp" />
     <ClCompile Include="Game\Private\COGPhysics.cpp" />

@@ -3,10 +3,10 @@
 #include "Game\Public\COGTransform.h"
 #include "Game\Public\Output.h"
 
-class COGBulletController : public COGController
+class COGEnemyController : public COGController
 {
 public:
-	COGBulletController(GameObject* pGO, exEngineInterface* pEngine, exVector2 weaponStartPosition)
+	COGEnemyController(exEngineInterface* pEngine, GameObject* pGO)
 		: COGController(pGO)
 	{
 		mGO = pGO;
@@ -14,20 +14,19 @@ public:
 		mTransform = pGO->FindComponent<COGTransform>(ComponentType::Transform);
 		// Position bullet lauched
 		mPosition = mTransform->GetPosition();
-		mStartWeaponPos = weaponStartPosition;
-		velocity = 80;
-		CalculateDirection();
+		velocity = 80;	
+		mDirection = { -1, 1 };
 	}
 
-	virtual ComponentType GetType() const { return ComponentType::BulletController; }
+	virtual ComponentType GetType() const { return ComponentType::EnemyController; }
 
-	virtual void CalculateDirection();
+	virtual void SetY();
 
 	virtual void Update(float deltaTime) override;
 
 
 private:
-	exEngineInterface*  mEngine;
+	exEngineInterface * mEngine;
 	GameObject *		mGO;
 	COGTransform *		mTransform;
 	exVector2			mPosition;
